@@ -2,7 +2,6 @@ package com.jajodia.swipecards.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.jajodia.swipecards.api.ApiService
 import com.jajodia.swipecards.api.WebService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -19,7 +18,7 @@ class SwipeCardViewModel() : ViewModel() {
             .subscribe({
                 Log.e("TAG", it.toString())
             }, {
-                Log.e("ERROR", it.message.toString())
+                Log.e("ERROR", it.toString())
             })
 
     }

@@ -1,5 +1,6 @@
 package com.jajodia.swipecards.api
 
+import com.google.gson.GsonBuilder
 import com.jajodia.swipecards.Constants
 import okhttp3.*
 import retrofit2.Retrofit
@@ -16,12 +17,21 @@ object WebService {
         .readTimeout(30, TimeUnit.SECONDS)
         .build()
 
+    private val moshi = MoshiConverterFactory
+        .create()
+        .asLenient()
+
+    private val gson = GsonBuilder()
+        .setLenient()
+        .create()
+
+
     private val retrofit: Retrofit = Retrofit
         .Builder()
         .client(httpClient)
         .baseUrl(Constants.API)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
+//        .addConverterFactory(moshi)
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .build()
 
