@@ -63,6 +63,9 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
 
+    //Card Stack view
+    implementation "com.yuyakaido.android:card-stack-view:2.3.4"
+
     implementation 'com.squareup.okhttp3:okhttp:4.0.1'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
