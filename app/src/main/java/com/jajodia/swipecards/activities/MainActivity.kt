@@ -2,6 +2,7 @@ package com.jajodia.swipecards.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.jajodia.swipecards.R
 import com.jajodia.swipecards.viewmodels.SwipeCardViewModel
@@ -13,6 +14,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        viewModel.observeData().observe(this, Observer {
+
+        })
+
 
         viewModel.loadData()
     }
