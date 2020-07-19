@@ -17,6 +17,9 @@ Build and install the apk of the app on an Android device with API level no lowe
 
 Upon restoring the network or fixing the error, you can reload the card by swiping down on the screen from the top. The cards can be navigated in both left and right directions using either swipe gestures or card navigation buttons. The cards can be reset using the reset button at the center.
 
+![Swipe Cards](https://user-images.githubusercontent.com/21195870/87877572-c0189700-c9fc-11ea-972d-a39c70502aba.jpg)
+
+
 ## Keywords
 
 Kotlin, RxJava, Retrofit, MVVM, Interceptor.
