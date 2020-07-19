@@ -36,6 +36,8 @@ class CardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
             cardAdapter.setCardData(cardItemsList)
             listSize = cardItemsList.size
 
+            swipe_refresh.isRefreshing = false
+
             error_text.visibility = View.GONE
             cardButtonsVisibility(View.VISIBLE)
         })
@@ -53,6 +55,7 @@ class CardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         }
 
         viewModel.observeError().observe(this, Observer {
+            swipe_refresh.isRefreshing = false
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             error_text.visibility = View.VISIBLE
             cardButtonsVisibility(View.GONE)
@@ -61,6 +64,9 @@ class CardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
             progress.visibility = View.GONE
         })
 
+        swipe_refresh.setOnRefreshListener {
+            viewModel.loadData()
+        }
 
         viewModel.loadData()
     }
