@@ -15,6 +15,7 @@ object WebService {
         .Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(30, TimeUnit.SECONDS)
+        .addInterceptor(NetworkInterceptor())
         .build()
 
     private val moshi = MoshiConverterFactory

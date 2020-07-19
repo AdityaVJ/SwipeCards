@@ -6,7 +6,7 @@ import com.jajodia.swipecards.api.WebService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class SwipeCardViewModel() : ViewModel() {
+class SwipeCardViewModel : ViewModel() {
 
     private val webservice = WebService.apiService
 
