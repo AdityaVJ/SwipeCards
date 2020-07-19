@@ -3,6 +3,7 @@ package com.jajodia.swipecards.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
@@ -35,6 +36,7 @@ class CardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
             cardAdapter.setCardData(cardItemsList)
             listSize = cardItemsList.size
 
+            error_text.visibility = View.GONE
             cardButtonsVisibility(View.VISIBLE)
         })
 
@@ -49,6 +51,15 @@ class CardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         refresh.setOnClickListener {
             card_viewpager.currentItem = 0
         }
+
+        viewModel.observeError().observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            error_text.visibility = View.VISIBLE
+            cardButtonsVisibility(View.GONE)
+            previous.visibility = View.GONE
+            progress_text.visibility = View.GONE
+            progress.visibility = View.GONE
+        })
 
 
         viewModel.loadData()

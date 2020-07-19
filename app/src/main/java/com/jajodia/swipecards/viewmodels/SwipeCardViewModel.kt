@@ -14,8 +14,10 @@ class SwipeCardViewModel : ViewModel() {
 
     private val webservice = WebService.apiService
     private val apiData: MutableLiveData<ApiResponseModel> = MutableLiveData()
+    private val errorString: MutableLiveData<String> = MutableLiveData()
 
     fun observeData(): LiveData<ApiResponseModel> = apiData
+    fun observeError(): LiveData<String> = errorString
 
     fun loadData() {
 
@@ -26,6 +28,7 @@ class SwipeCardViewModel : ViewModel() {
                 apiData.postValue(it)
             }, {
                 Log.e("ERROR", it.message.toString())
+                errorString.postValue(it.message.toString())
             })
 
     }
