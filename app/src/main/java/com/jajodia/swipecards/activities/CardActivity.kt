@@ -2,7 +2,6 @@ package com.jajodia.swipecards.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,10 +34,29 @@ class CardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
             cardItemsList = it.data
             cardAdapter.setCardData(cardItemsList)
             listSize = cardItemsList.size
-            Log.e("ListSize", listSize.toString())
+
+            cardButtonsVisibility(View.VISIBLE)
         })
 
+        previous.setOnClickListener {
+            card_viewpager.currentItem = card_viewpager.currentItem - 1
+        }
+
+        next.setOnClickListener {
+            card_viewpager.currentItem = card_viewpager.currentItem + 1
+        }
+
+        refresh.setOnClickListener {
+            card_viewpager.currentItem = 0
+        }
+
+
         viewModel.loadData()
+    }
+
+    private fun cardButtonsVisibility(visibility: Int) {
+        refresh.visibility = visibility
+        next.visibility = visibility
     }
 
     override fun onPageScrollStateChanged(state: Int) {
@@ -55,6 +73,17 @@ class CardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
     override fun onPageSelected(position: Int) {
         val p: Float = (position.toFloat() + 1) / listSize * 100
+
+        if (position == 0)
+            previous.visibility = View.GONE
+        else
+            previous.visibility = View.VISIBLE
+
+        if (position == listSize - 1)
+            next.visibility = View.GONE
+        else
+            next.visibility = View.VISIBLE
+
 
         progress_text.visibility = View.VISIBLE
         progress.visibility = View.VISIBLE

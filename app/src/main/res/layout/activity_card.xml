@@ -71,4 +71,44 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".85" />
 
+    <ImageButton
+        android:id="@+id/next"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_chevron_right"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottom_guide" />
+
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_chevron_left"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottom_guide" />
+
+    <ImageButton
+        android:id="@+id/refresh"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_refresh"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottom_guide" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
